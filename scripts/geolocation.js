@@ -421,8 +421,7 @@ async function showDeviceDetailsWithGeo(device) {
       if (locationData.isPrivate) {
         locationInfo = `
           <div class="location-detail-row">
-            <span class="location-detail-label">🏠 Network Type:</span>
-            <span class="location-detail-value">Private/Local</span>
+            <span class="location-detail-label">Unknown</span>
           </div>
         `;
       } else {
@@ -444,7 +443,7 @@ async function showDeviceDetailsWithGeo(device) {
             <span class="location-detail-value">${locationData.isp || 'Unknown'}</span>
           </div>
           <div class="location-detail-row">
-            <span class="location-detail-label">📍 Coordinates:</span>
+            <span class="location-detail-label">📍 Coords:</span>
             <span class="location-detail-value">
               ${locationData.latitude || 'N/A'}, ${locationData.longitude || 'N/A'}
               ${locationData.latitude && locationData.longitude ? 
@@ -475,16 +474,12 @@ async function showDeviceDetailsWithGeo(device) {
         <div class="detail-value" style="margin-top: 8px;">${locationInfo}</div>
       </div>
       <div class="detail-row"><span class="detail-label">MAC:</span><span class="detail-value">${device.mac}</span></div>
-      <div class="detail-row"><span class="detail-label">Vendor:</span><span class="detail-value">${device.vendor}</span></div>
       <div class="detail-row"><span class="detail-label">Hostname:</span><span class="detail-value">${device.hostname}</span></div>
       <div class="detail-row"><span class="detail-label">Device Type:</span><span class="detail-value">${device.type}</span></div>
       <div class="detail-row"><span class="detail-label">Status:</span><span class="detail-value">${device.status}</span></div>
       <div class="detail-row"><span class="detail-label">Open Ports:</span><span class="detail-value">${device.ports.join(", ") || "None"}</span></div>
       <div class="detail-row"><span class="detail-label">SNMP Name:</span><span class="detail-value">${device.snmpInfo.sysName}</span></div>
       <div class="detail-row"><span class="detail-label">SNMP Description:</span><span class="detail-value">${device.snmpInfo.sysDescr}</span></div>
-      <div class="detail-row"><span class="detail-label">Uptime (s):</span><span class="detail-value">${device.snmpInfo.sysUptime}</span></div>
-      <div class="detail-row"><span class="detail-label">Contact:</span><span class="detail-value">${device.snmpInfo.sysContact}</span></div>
-      <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">${device.snmpInfo.sysLocation}</span></div>
     `;
   } catch (error) {
     console.error("Error updating device details with location:", error);
